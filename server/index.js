@@ -1,24 +1,18 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const cors = require("cors");
-const mongoose = require("mongoose");
-const router = express.Router();
+// const mongoose = require("mongoose");
+const site = require("./routes/site.js");
+const auth = require("./routes/auth.js");
 const connectDB = require("./db.js");
-const User = require("./models/User.js");
-const Notes = require("./models/Notes.js");
 require("dotenv").config();
-app.use(cors());
 connectDB();
 
-router.get("/", (req, res) => {
-  res.send("Hello from our server!");
-});
-
-router.post("/", (req, res) => {
-  res.send("Merhaba Express");
-});
-
-app.use("/", router);
+app.use(cors());
+app.use(bodyParser.json());
+app.use("/", site);
+app.use("/auth", auth);
 
 app.listen(8080, () => {
   console.log("server listening on port 8080");
