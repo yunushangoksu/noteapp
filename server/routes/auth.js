@@ -4,15 +4,15 @@ const auth = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/User.js");
 const jwt = require("jsonwebtoken");
-
-auth.get("/", function (req, res) {
-  res.send("Giriş alanı");
-});
+require("dotenv").config();
 
 auth.post("/register", async function (req, res) {
   const { userName, name, email, password } = req.body;
 
   try {
+    if (userName.length < 2 || name.length < 2 || email.length <= 5 || password.length < 8) {
+      return;
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ userName, name, email, password: hashedPassword });
     await user.save();
@@ -23,10 +23,13 @@ auth.post("/register", async function (req, res) {
 });
 
 auth.post("/login", async function (req, res) {
-  const { username, password } = req.body;
+  const userName = req.body.loginUserName;
+  const password = req.body.loginPassword;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ userName });
+    console.log(req.body);
+    console.log({ userName, password });
     if (!user) {
       return res.status(404).json({ message: "Kullanıcı Bulunamadı" });
     }
@@ -34,16 +37,11 @@ auth.post("/login", async function (req, res) {
     if (!passwordMatch) {
       return res.status(401).json({ message: "Geçersiz şifre" });
     }
-
-    const token = jwt.sign({ username: user.username }, "gizliAnahatar");
-    res.status(200).json({ token });
+    const accessToken = jwt.sign({ username: user.userName }, process.env.ACCESS_TOKEN_SECRET);
+    res.status(200).json({ accessToken: accessToken });
   } catch (err) {
-    res.status(500).json({ message: err.mesage });
+    res.status(500).json({ message: err });
   }
-});
-
-auth.get("/:username", function (req, res) {
-  res.send("Kullanıcı: " + req.params.username);
 });
 
 module.exports = auth;
