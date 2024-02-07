@@ -7,7 +7,10 @@ function AuthScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmit(e) {
+  const [loginUserName, setLoginUserName] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  async function handleSubmitRegister(e) {
     e.preventDefault();
     try {
       await axios.post("http://localhost:8080/auth/register", { userName, name, email, password });
@@ -24,26 +27,49 @@ function AuthScreen() {
     }
   }
 
+  async function handleSubmitLogin(e) {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8080/auth/login", { loginUserName, loginPassword });
+      setLoginUserName("");
+      setLoginPassword("");
+    } catch (error) {
+      console.log("Form gönderme hatası:", error.response.data);
+      setLoginUserName("");
+      setLoginPassword("");
+    }
+  }
+
   return (
     <div className="authScreen">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="">Kullanıcı Adı: </label>
-        <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+      <form onSubmit={handleSubmitRegister}>
+        <label>Kullanıcı Adı: </label>
+        <input type="text" value={userName} minLength="2" onChange={(e) => setUserName(e.target.value)} />
         <br />
 
-        <label htmlFor="">İsim Soyisim: </label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <label>İsim Soyisim: </label>
+        <input type="text" value={name} minLength="2" onChange={(e) => setName(e.target.value)} />
         <br />
 
-        <label htmlFor="">Email: </label>
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label>Email: </label>
+        <input type="text" value={email} minLength="5" onChange={(e) => setEmail(e.target.value)} />
         <br />
 
-        <label htmlFor="">Şifre: </label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <label>Şifre: </label>
+        <input type="password" value={password} minLength="8" onChange={(e) => setPassword(e.target.value)} />
         <br />
 
         <input type="submit" value={"Kayıt Ol"} />
+      </form>
+      <br />
+      <form onSubmit={handleSubmitLogin}>
+        <label>Kullanıcı Adı: </label>
+        <input type="text" value={loginUserName} onChange={(e) => setLoginUserName(e.target.value)} />
+        <br />
+        <label>Şifre:</label>
+        <input type="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+        <br />
+        <input type="submit" value={"Giriş Yap"} />
       </form>
     </div>
   );
