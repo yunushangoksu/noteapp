@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function AuthScreen() {
-  const [whichForm, setWhichForm] = useState("");
+  const [whichForm, setWhichForm] = useState(false);
 
   const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
@@ -60,46 +60,34 @@ function AuthScreen() {
           <h1>Welcome</h1>
           <p>Varoluştaki en güzel not tutma uygulaması</p>
         </div>
-        {/* Kayıt Formu 
-        <form onSubmit={handleSubmitRegister} className="registerForm">
-          <div className="formInput">
-            <label>Kullanıcı Adı: </label>
-            <input type="text" value={userName} minLength="2" onChange={(e) => setUserName(e.target.value)} />
-          </div>
 
-          <div className="formInput">
-            <label>İsim Soyisim: </label>
-            <input type="text" value={name} minLength="2" onChange={(e) => setName(e.target.value)} />
-          </div>
-
-          <div className="formInput">
-            <label>Email: </label>
-            <input type="text" value={email} minLength="5" onChange={(e) => setEmail(e.target.value)} />
-          </div>
-
-          <div className="formInput">
-            <label>Şifre: </label>
-            <input type="password" value={password} minLength="8" onChange={(e) => setPassword(e.target.value)} />
-          </div>
-
-          <input type="submit" value={"Kayıt Ol"} />
-
-                              <p className="formSwitchText">
-
-            Zaten üye misin? <a href="#">Giriş yap</a>
-          </p>
-        </form>
-*/}
-
-        {/* Giriş Formu */}
-        <form onSubmit={handleSubmitLogin} className="loginForm">
-          <input type="text" value={loginUserName} placeholder="E-Posta" onChange={(e) => setLoginUserName(e.target.value)} />
-          <input type="password" value={loginPassword} placeholder="Şifre" onChange={(e) => setLoginPassword(e.target.value)} />
-          <input type="submit" value={"Giriş Yap"} />
-          <p className="formSwitchText">
-            Üye değil misin? <a href="#">Kayıt ol</a>
-          </p>
-        </form>
+        {whichForm ? (
+          <form onSubmit={handleSubmitRegister} className="registerForm">
+            <input type="text" value={userName} minLength="2" placeholder="Kullanıcı Adı" onChange={(e) => setUserName(e.target.value)} />
+            <input type="text" value={name} minLength="2" placeholder="İsim Soyisim" onChange={(e) => setName(e.target.value)} />
+            <input type="text" value={email} minLength="5" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" value={password} minLength="8" placeholder="Şifre" onChange={(e) => setPassword(e.target.value)} />
+            <input type="submit" value={"Kayıt Ol"} />
+            <p className="formSwitchText">
+              Zaten üye misin?{" "}
+              <a href="#" onClick={() => setWhichForm(false)}>
+                Giriş yap
+              </a>
+            </p>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmitLogin} className="loginForm">
+            <input type="text" value={loginUserName} placeholder="E-Posta" onChange={(e) => setLoginUserName(e.target.value)} />
+            <input type="password" value={loginPassword} placeholder="Şifre" onChange={(e) => setLoginPassword(e.target.value)} />
+            <input type="submit" value={"Giriş Yap"} />
+            <p className="formSwitchText">
+              Üye değil misin?{" "}
+              <a href="#" onClick={() => setWhichForm(true)}>
+                Kayıt ol
+              </a>
+            </p>
+          </form>
+        )}
       </div>
     </div>
   );
