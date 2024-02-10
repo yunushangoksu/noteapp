@@ -1,0 +1,84 @@
+.authScreen {
+  display: flex;
+  flex-flow: row;
+  height: 100dvh;
+}
+
+.fillerSpace {
+  display: flex;
+  gap: 30px;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+}
+.fillerSpace img {
+  width: 15%;
+}
+.fillerSpace h1 {
+  font-size: 4em;
+}
+.fillerSpace .footerText {
+  margin-top: auto;
+  padding-bottom: 2em;
+  width: 50%;
+}
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  margin-top: auto;
+}
+.formSpace {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 2;
+}
+.welcomeText {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-top: 5em;
+  padding-bottom: 10em;
+}
+.welcomeText h1 {
+  font-size: 4em;
+  color: rgb(10, 161, 161);
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+  outline: none;
+  width: 75%;
+  height: 30px;
+  font-size: 1.5em;
+  background-color: aquamarine;
+  border-radius: 50px;
+  padding: 10px;
+  border: none;
+}
+input[type="submit"] {
+  font-size: 1.5em;
+  background-color: deepskyblue;
+  border: none;
+  border-radius: 50px;
+  width: 32%;
+  height: 50px;
+  padding: 10px;
+}
+.formSwitchText {
+  font-size: 1.5em;
+}
+.formSwitchText a {
+  text-decoration: underline;
+  color: deepskyblue;
+}

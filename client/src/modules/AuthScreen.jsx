@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 
 function AuthScreen() {
+  const [whichForm, setWhichForm] = useState("");
+
   const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,35 +44,63 @@ function AuthScreen() {
 
   return (
     <div className="authScreen">
-      <form onSubmit={handleSubmitRegister}>
-        <label>Kullanıcı Adı: </label>
-        <input type="text" value={userName} minLength="2" onChange={(e) => setUserName(e.target.value)} />
-        <br />
+      <div className="fillerSpace">
+        <div className="logoWrapper">
+          <img src="logo.png" alt="" />
+          <h1>Noteapp</h1>
+        </div>
+        <p className="footerText">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas eos sit dicta necessitatibus repellat officiis ipsum, sunt magnam, tempora minima
+          voluptatem neque quos eaque, asperiores ex ut quo explicabo ab.
+        </p>
+      </div>
 
-        <label>İsim Soyisim: </label>
-        <input type="text" value={name} minLength="2" onChange={(e) => setName(e.target.value)} />
-        <br />
+      <div className="formSpace">
+        <div className="welcomeText">
+          <h1>Welcome</h1>
+          <p>Varoluştaki en güzel not tutma uygulaması</p>
+        </div>
+        {/* Kayıt Formu 
+        <form onSubmit={handleSubmitRegister} className="registerForm">
+          <div className="formInput">
+            <label>Kullanıcı Adı: </label>
+            <input type="text" value={userName} minLength="2" onChange={(e) => setUserName(e.target.value)} />
+          </div>
 
-        <label>Email: </label>
-        <input type="text" value={email} minLength="5" onChange={(e) => setEmail(e.target.value)} />
-        <br />
+          <div className="formInput">
+            <label>İsim Soyisim: </label>
+            <input type="text" value={name} minLength="2" onChange={(e) => setName(e.target.value)} />
+          </div>
 
-        <label>Şifre: </label>
-        <input type="password" value={password} minLength="8" onChange={(e) => setPassword(e.target.value)} />
-        <br />
+          <div className="formInput">
+            <label>Email: </label>
+            <input type="text" value={email} minLength="5" onChange={(e) => setEmail(e.target.value)} />
+          </div>
 
-        <input type="submit" value={"Kayıt Ol"} />
-      </form>
-      <br />
-      <form onSubmit={handleSubmitLogin}>
-        <label>Kullanıcı Adı: </label>
-        <input type="text" value={loginUserName} onChange={(e) => setLoginUserName(e.target.value)} />
-        <br />
-        <label>Şifre:</label>
-        <input type="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
-        <br />
-        <input type="submit" value={"Giriş Yap"} />
-      </form>
+          <div className="formInput">
+            <label>Şifre: </label>
+            <input type="password" value={password} minLength="8" onChange={(e) => setPassword(e.target.value)} />
+          </div>
+
+          <input type="submit" value={"Kayıt Ol"} />
+
+                              <p className="formSwitchText">
+
+            Zaten üye misin? <a href="#">Giriş yap</a>
+          </p>
+        </form>
+*/}
+
+        {/* Giriş Formu */}
+        <form onSubmit={handleSubmitLogin} className="loginForm">
+          <input type="text" value={loginUserName} placeholder="E-Posta" onChange={(e) => setLoginUserName(e.target.value)} />
+          <input type="password" value={loginPassword} placeholder="Şifre" onChange={(e) => setLoginPassword(e.target.value)} />
+          <input type="submit" value={"Giriş Yap"} />
+          <p className="formSwitchText">
+            Üye değil misin? <a href="#">Kayıt ol</a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
