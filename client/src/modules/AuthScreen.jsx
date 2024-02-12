@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+import "../styles/AuthScreen.css";
+
 function AuthScreen() {
   const [whichForm, setWhichForm] = useState(false);
 
