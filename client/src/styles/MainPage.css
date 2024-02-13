@@ -7,18 +7,31 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 6dvh;
+  padding: 0 15px 0 15px;
 }
 .navBar {
   background-color: greenyellow;
   display: flex;
   flex-flow: column;
-  width: 8vmin;
+  gap: 1em;
+  width: 4vmin;
   height: 94dvh;
+  padding: 0 15px 0 15px;
 }
 .searchInput {
+  transition: 0.15s;
+  font-size: 1.5em;
   width: 20%;
   height: 75%;
+  border-radius: 50px;
+  border: none;
+  padding: 0 10px 0 10px;
+}
+.searchInput:focus {
+  transition: 0.15s;
+  width: 35%;
 }
 .logoWrapper {
   display: flex;
+  gap: 5em;
 }
