@@ -1,0 +1,27 @@
+.cardWrapper {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border: solid #5f6368 1px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 25vmin;
+  aspect-ratio: 5 / 7;
+}
+.cardHeader {
+  padding: 15px;
+  font-size: 1.2em;
+}
+.cardContent {
+  display: flex;
+  font-size: 1em;
+  line-height: 1.1;
+  padding: 0 15px 0 15px;
+}
+.cardControl {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}

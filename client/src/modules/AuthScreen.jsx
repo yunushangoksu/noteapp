@@ -71,7 +71,7 @@ function AuthScreen() {
             <input type="password" value={password} minLength="8" placeholder="Şifre" onChange={(e) => setPassword(e.target.value)} />
             <input type="submit" value={"Kayıt Ol"} />
             <p className="formSwitchText">
-              Zaten üye misin?{" "}
+              Zaten üye misin?
               <a href="#" onClick={() => setWhichForm(false)}>
                 Giriş yap
               </a>
