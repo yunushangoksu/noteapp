@@ -46,9 +46,12 @@ function MainPage() {
         </div>
       </div>
       <div className="contentWrapper">
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <div className="notesWrapper">
+          <NoteCard title={"Bu bir basliktir"} note={"Bu not icerigidir cok iyi bir not bu"} noteId={1} />
+          <NoteCard title={"Bu baska bir basliktir"} note={"Bu baska bir not icerigidir"} noteId={2} />
+          <NoteCard title={"Bu da bir basliktir"} note={"Cok iyi bir not bu"} noteId={3} />
+        </div>
+        <button className="addButton">Add Button</button>
       </div>
     </div>
   );
