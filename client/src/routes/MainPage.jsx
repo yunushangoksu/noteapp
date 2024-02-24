@@ -2,7 +2,7 @@ import "../styles/MainPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faLightbulb, faBoxArchive, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import NoteCard from "./NoteCard";
+import NoteCard from "../modules/NoteCard";
 
 function MainPage() {
   const [navBar, setNavBar] = useState(false);

@@ -1,13 +1,25 @@
 import "./App.css";
-import MainPage from "./modules/MainPage";
-// import AuthScreen from "./modules/AuthScreen";
+import MainPage from "./routes/MainPage";
+import AuthScreen from "./routes/AuthScreen";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AuthScreen />,
+  },
+  {
+    path: "/home",
+    element: <MainPage />,
+  },
+]);
 
 function App() {
   return (
-    <div>
-      {/* <AuthScreen /> */}
-      <MainPage />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
