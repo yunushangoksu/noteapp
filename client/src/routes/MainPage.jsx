@@ -7,13 +7,37 @@ import NoteCard from "../modules/NoteCard";
 
 function MainPage() {
   const [navBar, setNavBar] = useState(false);
+  const [notes, setNotes] = useState([
+    {
+      title: "Bu bir basliktir",
+      note: "Bu not icerigidir cok iyi bir not bu",
+      archived: false,
+      noteID: 1,
+    },
+    {
+      title: "Bu baska bir basliktir",
+      note: "Bu baska bir not icerigidir",
+      archived: false,
+      noteID: 2,
+    },
+    {
+      title: "Bu da bir basliktir",
+      note: "Cok iyi bir not bu",
+      archived: false,
+      noteID: 3,
+    },
+  ]);
 
   function handleMenuClick() {
+    let root = document.documentElement;
     if (navBar) {
-      document.querySelector(".navBar").style.width = "3vmin";
+      console.log(styles);
+      root.style.setProperty("--navbarWidth-value", "3vmin");
       setNavBar(false);
     } else {
-      document.querySelector(".navBar").style.width = "20vmin";
+      console.log(styles);
+
+      root.style.setProperty("--navbarWidth-value", "20vmin");
       setNavBar(true);
     }
   }
@@ -48,9 +72,9 @@ function MainPage() {
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.notesWrapper}>
-          <NoteCard title={"Bu bir basliktir"} note={"Bu not icerigidir cok iyi bir not bu"} noteId={1} />
-          <NoteCard title={"Bu baska bir basliktir"} note={"Bu baska bir not icerigidir"} noteId={2} />
-          <NoteCard title={"Bu da bir basliktir"} note={"Cok iyi bir not bu"} noteId={3} />
+          {notes.map(function (data) {
+            return <NoteCard title={data.title} note={data.note} archived={data.archived} noteId={data.noteID} key={data.noteID} />;
+          })}
         </div>
         <button className={styles.addButton}>Add Button</button>
       </div>
