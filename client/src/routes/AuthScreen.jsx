@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-import "../styles/AuthScreen.css";
+import styles from "../styles/AuthScreen.module.css";
 
 function AuthScreen() {
   const [whichForm, setWhichForm] = useState(false);
@@ -45,32 +45,32 @@ function AuthScreen() {
   }
 
   return (
-    <div className="authScreen">
-      <div className="fillerSpace">
-        <div className="logoWrapper">
+    <div className={styles.authScreen}>
+      <div className={styles.fillerSpace}>
+        <div className={styles.logoWrapper}>
           <img src="logo.png" alt="" />
           <h1>Noteapp</h1>
         </div>
-        <p className="footerText">
+        <p className={styles.footerText}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas eos sit dicta necessitatibus repellat officiis ipsum, sunt magnam, tempora minima
           voluptatem neque quos eaque, asperiores ex ut quo explicabo ab.
         </p>
       </div>
 
-      <div className="formSpace">
-        <div className="welcomeText">
+      <div className={styles.formSpace}>
+        <div className={styles.welcomeText}>
           <h1>Welcome</h1>
           <p>Varoluştaki en güzel not tutma uygulaması</p>
         </div>
 
         {whichForm ? (
-          <form onSubmit={handleSubmitRegister} className="registerForm">
+          <form onSubmit={handleSubmitRegister} className={styles.registerForm}>
             <input type="text" value={userName} minLength="2" placeholder="Kullanıcı Adı" onChange={(e) => setUserName(e.target.value)} />
             <input type="text" value={name} minLength="2" placeholder="İsim Soyisim" onChange={(e) => setName(e.target.value)} />
             <input type="text" value={email} minLength="5" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
             <input type="password" value={password} minLength="8" placeholder="Şifre" onChange={(e) => setPassword(e.target.value)} />
             <input type="submit" value={"Kayıt Ol"} />
-            <p className="formSwitchText">
+            <p className={styles.formSwitchText}>
               Zaten üye misin?
               <a href="#" onClick={() => setWhichForm(false)}>
                 Giriş yap
@@ -78,7 +78,7 @@ function AuthScreen() {
             </p>
           </form>
         ) : (
-          <form onSubmit={handleSubmitLogin} className="loginForm">
+          <form onSubmit={handleSubmitLogin} className={styles.loginForm}>
             <input type="text" value={loginUserName} placeholder="E-Posta" onChange={(e) => setLoginUserName(e.target.value)} />
             <input type="password" value={loginPassword} placeholder="Şifre" onChange={(e) => setLoginPassword(e.target.value)} />
             <input type="submit" value={"Giriş Yap"} />

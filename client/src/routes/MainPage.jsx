@@ -1,4 +1,5 @@
-import "../styles/MainPage.css";
+import styles from "../styles/MainPage.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faLightbulb, faBoxArchive, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -18,40 +19,40 @@ function MainPage() {
   }
 
   return (
-    <div>
-      <div className="header">
-        <div className="logoWrapper">
-          <div className="navbarButton">
+    <div className={styles.bodyWrapper}>
+      <div className={styles.header}>
+        <div className={styles.logoWrapper}>
+          <div className={styles.navbarButton}>
             <FontAwesomeIcon icon={faBars} size="xl" onClick={handleMenuClick} />
           </div>
-          <div className="logo">Noteapp</div>
+          <div className={styles.logo}>Noteapp</div>
         </div>
-        <input type="text" className="searchInput" placeholder="Search" />
-        <div className="currentUser">
+        <input type="text" className={styles.searchInput} placeholder="Search" />
+        <div className={styles.currentUser}>
           <FontAwesomeIcon icon={faUser} size="xl" />
         </div>
       </div>
-      <div className="navBar">
-        <div className="faIcon">
+      <div className={styles.navBar}>
+        <div className={styles.faIcon}>
           <FontAwesomeIcon icon={faLightbulb} size="xl" fixedWidth />
           <div>Notes</div>
         </div>
-        <div className="faIcon">
+        <div className={styles.faIcon}>
           <FontAwesomeIcon icon={faBoxArchive} size="xl" fixedWidth />
           <div>Archive</div>
         </div>
-        <div className="faIcon">
+        <div className={styles.faIcon}>
           <FontAwesomeIcon icon={faTrash} size="xl" fixedWidth />
           <div>Thrash</div>
         </div>
       </div>
-      <div className="contentWrapper">
-        <div className="notesWrapper">
+      <div className={styles.contentWrapper}>
+        <div className={styles.notesWrapper}>
           <NoteCard title={"Bu bir basliktir"} note={"Bu not icerigidir cok iyi bir not bu"} noteId={1} />
           <NoteCard title={"Bu baska bir basliktir"} note={"Bu baska bir not icerigidir"} noteId={2} />
           <NoteCard title={"Bu da bir basliktir"} note={"Cok iyi bir not bu"} noteId={3} />
         </div>
-        <button className="addButton">Add Button</button>
+        <button className={styles.addButton}>Add Button</button>
       </div>
     </div>
   );
