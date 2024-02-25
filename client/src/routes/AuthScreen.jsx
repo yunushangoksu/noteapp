@@ -79,7 +79,7 @@ function AuthScreen() {
           </form>
         ) : (
           <form onSubmit={handleSubmitLogin} className={styles.loginForm}>
-            <input type="text" value={loginUserName} placeholder="E-Posta" onChange={(e) => setLoginUserName(e.target.value)} />
+            <input type="text" value={loginUserName} placeholder="Kullanıcı Adı" onChange={(e) => setLoginUserName(e.target.value)} />
             <input type="password" value={loginPassword} placeholder="Şifre" onChange={(e) => setLoginPassword(e.target.value)} />
             <input type="submit" value={"Giriş Yap"} />
             <p className="formSwitchText">

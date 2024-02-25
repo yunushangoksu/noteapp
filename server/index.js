@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const cors = require("cors");
 // const mongoose = require("mongoose");
@@ -8,6 +9,7 @@ const connectDB = require("./db.js");
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
+app.use(session({ secret: "keyboard cat", resave: false, saveUninitialized: false, cookie: { maxAge: 60000 } }));
 connectDB();
 
 app.use("/", site);

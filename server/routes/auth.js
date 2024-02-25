@@ -37,7 +37,7 @@ auth.post("/login", async function (req, res) {
     if (!passwordMatch) {
       return res.status(401).json({ message: "Geçersiz şifre" });
     }
-    const accessToken = jwt.sign({ username: user.userName }, process.env.ACCESS_TOKEN_SECRET);
+    const accessToken = jwt.sign({ username: user.userName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1 hour" });
     res.status(200).json({ accessToken: accessToken });
   } catch (err) {
     res.status(500).json({ message: err });
